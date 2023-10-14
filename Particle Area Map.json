@@ -1,0 +1,99 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text":"What Percentage of the Ozone and NO2 is in the Air", "fontSize": 24},
+  "width": 700,
+  "height": 400,
+  "params": [
+    {
+      "name": "Country_Filter",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Australia",
+          "United States of America",
+          "China",
+          "India",
+          "United Kingdom of Great Britain and Northern Ireland",
+          "Malaysia",
+          "Canada",
+          "Germany",
+          "Italy",
+          "France"
+        ],
+        "labels": [
+          "Show All",
+          "Australia",
+          "USA",
+          "China",
+          "India",
+          "UK",
+          "Malaysia",
+          "Canada",
+          "Germany",
+          "Italy",
+          "France"
+        ],
+        "name": "Country Filter:"
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/jdun0012/Assignment26/main/AQI%20and%20Lat%20Long%20of%20Countries.csv"
+  },
+  "transform": [
+    {"filter": "Country_Filter == null || datum.Country == Country_Filter"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "Ozone_AQI_Value",
+      "type": "quantitative",
+      "scale": {"zero": false, "nice": false},
+      "title": "Ozone AQI Value",
+      "axis": {"labelFontSize": 15, "titleFontSize": 15}
+    },
+    "y": {
+      "field": "NO2_AQI_Value",
+      "type": "quantitative",
+      "scale": {"domain": [0, 500]},
+      "axis": {"title": "NO2 AQI Value", "labelFontSize": 15, "titleFontSize": 15}
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "clip": true,
+        "orient": "vertical",
+        "opacity": 0.6
+      }
+    },
+    {
+      "transform": [{"calculate": "datum.y - 50", "as": "ny"}],
+      "mark": {"type": "area", "clip": true, "orient": "vertical"},
+      "encoding": {
+        "y": {
+          "field": "PM25_AQI_Value",
+          "type": "quantitative",
+          "scale": {"domain": [0, 500]}
+        },
+        "opacity": {"value": 0.7},
+        "tooltip": [
+          {
+            "field": "Ozone_AQI_Value",
+            "type": "quantitative",
+            "title": "Ozone AQI Value"
+          },
+          {
+            "field": "NO2_AQI_Value",
+            "type": "quantitative",
+            "title": "NO2 AQI Value"
+          },
+          {"field": "Country"},
+          {"field": "City"}
+        ]
+      }
+    }
+  ],
+  "config": {"area": {"interpolate": "monotone"}}
+}

@@ -1,0 +1,296 @@
+
+body{
+  background-color: lightblue;
+}
+
+
+.pure-u-1-1 {
+  text-align: center;
+  
+ 
+
+}
+.PageT {
+ width: 50%;
+}
+.AQI-Text-Above{
+  width: 35%;
+  font-size: 24px;
+  padding: 10px;
+  position: relative;
+  left: 27%;
+  font-family: Bungee;
+  background-color: #8BABF1;
+  
+}
+
+.Ozone_Title_Two{
+  width: 35%;
+  font-size: 32px;
+  padding: 10px;
+  position: relative;
+  left: 14.5%;
+  text-align: center;
+  font-family: Bungee;
+  background-color: #E6308A;
+}
+
+.water-title-top{
+  width: 35%;
+  font-size: 32px;
+  padding: 10px;
+  position: relative;
+  left: 14.5%;
+  text-align: center;
+  font-family: Bungee;
+  background-color: #E6308A;
+
+}
+.OzoneTitleTwo{
+  font-size: 32px;
+  
+}
+
+.page {
+    width: 850px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
+  }
+
+  .pure-g {
+    margin-bottom: 40px;
+    padding-right: 15%; 
+    /*padding-left: 6%;*/
+    
+    
+  }
+  .pure-u-1-2 {
+    float: left;
+    padding-right: 10px;
+  } 
+  
+  /*.pure-u-1-3{
+    float: right;
+  }*/
+  
+
+  
+
+   .description-right {
+    padding-left: 20px;
+  }
+
+  
+
+  .description-left {
+    padding-right: 20px;
+    width: 50%;
+    margin-left: 15%;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    
+    
+  }
+
+.Ozone_Title{
+  padding-right: 20px;
+    width: 29%;
+    margin-left: 28%;
+    font-size: 20px;
+    font-family: Bungee;
+    background-color: #8BABF1;
+}
+
+.water-title-bot{
+  padding-right: 20px;
+    width: 29%;
+    margin-left: 28%;
+    font-size: 20px;
+    font-family: Bungee;
+    background-color: #8BABF1;
+    
+
+}
+
+.Particle-Text-Title{
+  width: 35%;
+  font-size: 32px;
+  padding: 10px;
+  position: relative;
+  left: 14.5%;
+  text-align: center;
+  font-family: Bungee;
+  background-color: #E6308A;
+
+}
+
+.Particle-Text-Section{
+  padding-right: 20px;
+    width: 29%;
+    margin-left: 28%;
+    font-size: 20px;
+    font-family: Bungee;
+    background-color: #8BABF1;
+
+}
+
+
+
+  .description-left-ozone{
+    padding-right: 20px;
+    width: 50%;
+    margin-left: 15%;
+    font-size: 20px;
+    position: relative;
+    left: 7%;
+    font-family: "Times New Roman", Times, serif;
+    
+  }
+
+  .AirWater_Description{
+    padding-right: 20px;
+    width: 50%;
+    margin-left: 15%;
+    font-size: 20px;
+    position: relative;
+    left: 0%;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .Particle_Description{
+    padding-right: 20px;
+    width: 50%;
+    margin-left: 15%;
+    font-size: 20px;
+    position: relative;
+    left: 0%;
+    font-family: "Times New Roman", Times, serif;
+  }
+ 
+  .vis-container_COMAP{
+    right: 35%;
+  }
+
+   .vis-container {
+    position: relative;
+    right: 50%;
+     /*width: 50%; */
+    /*align-content: center;*/
+    
+  } 
+
+
+  .vis-container_NOPie{
+   left: 35%;
+  }
+
+
+ .vis-container-Ozone-Pie{
+  right: 0%;
+ }
+
+ .vis-container_COBar{
+  position: relative;
+    right: 14%;
+ }
+
+ .vis-container_Particle{
+  position: relative;
+    right: 17%;
+ }
+
+ .vis-container_WaterAir{
+  position: relative;
+    right: 17%;
+ }
+
+  .figure_1 {
+    position: relative;
+    right: 50%;
+    font-family: "Times New Roman", Times, serif;
+    
+    
+  }
+
+  .figure_2{
+    position: relative;
+    left: -102%;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .figure_3{
+    position: relative;
+    left: 39%;
+    bottom: 7%;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .figure_4{
+    position: relative;
+    left: -14%;
+    font-family: "Times New Roman", Times, serif;
+   
+  }
+  
+  .figure_5{
+    position: relative;
+    left: -17%;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .figure_6{
+    position: relative;
+    left: -17%;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  /*.Ozone_Title {
+    font-weight: 900;
+    background-color: burlywood;
+    width: 500px;
+    position: relative;
+    left: 35%;
+  }*/
+
+  .NO2_Title{
+    font-weight: 900;
+    background-color: burlywood;
+    width: 500px;
+  }
+
+  /*.CO2_Title{
+    font-weight: 900;
+    background-color: burlywood;
+    width: 500px;
+  }*/
+  .CO2_Title{
+    width: 35%;
+  font-size: 32px;
+  padding: 10px;
+  position: relative;
+  left: 14.5%;
+  text-align: center;
+  font-family: Bungee;
+  background-color: #E6308A;
+
+  }
+
+  .CO_Description{
+    padding-right: 5px;
+    width: 50%;
+    margin-left: 15%;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+  }
+
+  .CO2_Section_Text{
+    padding-right: 20px;
+    width: 29%;
+    margin-left: 28%;
+    font-size: 20px;
+    font-family: Bungee;
+    background-color: #8BABF1;
+    
+  }
