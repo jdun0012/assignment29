@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 450,
+  "title": "Carbon Monoxide Air Quality Around the World",
+  "params": [
+    {
+      "name": "CO_Controller",
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 140,
+        "step": 20,
+        "name": "CO AQI Value"
+      }
+    },
+    {
+      "name": "Country_Filter",
+      "bind": {
+        "input": "select",
+        "options": [null, "Australia", "United States of America"],
+        "labels": ["Show All", "Australia", "USA"],
+        "name": "Country Selection"
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/jdun0012/Assignment23/main/AQI%20and%20Lat%20Long%20of%20Countries.csv"
+  },
+  "transform": [
+    {"filter": "datum.CO_AQI_Value > CO_Controller"},
+    {"filter": "Country_Filter == null || datum.Country == Country_Filter"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "CO_AQI_Value", "type": "quantitative"},
+    "x": {"field": "Country"},
+    "color": {
+      "field": "CO_AQI_Category",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Good",
+          "Moderate",
+          "Unhealthy",
+          "Very Unhealthy",
+          "Hazardous"
+        ],
+        "range": ["#42FF33", "#F0FF33", "#FF2502", "#8C0371", "#920F02"]
+      }
+    },
+    "tooltip": [
+      {"field": "CO_AQI_Value", "type": "nominal"},
+      {"field": "Country"},
+      {"field": "City"}
+    ]
+  },
+  "config": {}
+}
