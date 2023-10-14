@@ -1,0 +1,92 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple pie chart with embedded data.",
+  "title": {"text":"Ozone Air Quality Around the World", "fontSize": 24},
+  "height": 375,
+  "width": 375,
+  "params": [
+    {
+      "name": "Country_Filter",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Australia",
+          "United States of America",
+          "China",
+          "India",
+          "United Kingdom of Great Britain and Northern Ireland",
+          "Malaysia",
+          "Canada",
+          "Germany",
+          "Italy",
+          "France"
+        ],
+        "labels": [
+          "Show All",
+          "Australia",
+          "USA",
+          "China",
+          "India",
+          "UK",
+          "Malaysia",
+          "Canada",
+          "Germany",
+          "Italy",
+          "France"
+        ],
+        "name": "Country Filter:"
+      }
+    },
+    {
+      "name": "Legend_Filter",
+      "select": {"type": "point", "fields": ["Ozone_AQI_Category"]},
+      "bind": "legend"
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/jdun0012/Assignment23/main/AQI%20and%20Lat%20Long%20of%20Countries.csv"
+  },
+  "transform": [
+    {"filter": "Country_Filter == null || datum.Country == Country_Filter"}
+  ],
+  "mark": {"type": "arc"},
+  "encoding": {
+    "theta": {"field": "City", "type": "nominal"},
+    "color": {
+      "field": "Ozone_AQI_Category",
+      "type": "ordinal",
+      "title": "AQI Category",
+      "legend": {"titleFontSize": 13},
+      "scale": {
+        "domain": [
+          "Good",
+          "Moderate",
+          "Unhealthy",
+          "Very Unhealthy",
+          "Hazardous"
+        ],
+        "range": ["#89CE00", "#5BA300", "#0073E6", "#E6308A", "#B51963"]
+      }
+    },
+    "opacity": {
+      "condition": {"param": "Legend_Filter", "value": 1},
+      "value": 0.1
+    },
+    "tooltip": [
+      {
+        "field": "Ozone_AQI_Value",
+        "type": "quantitative",
+        "title": "Ozone AQI Value"
+      },
+      {
+        "field": "Ozone_AQI_Category",
+        "type": "nominal",
+        "title": "Ozone AQI Category"
+      },
+      {"field": "Country"},
+      {"field": "City"}
+    ]
+  },
+  "config": {}
+}

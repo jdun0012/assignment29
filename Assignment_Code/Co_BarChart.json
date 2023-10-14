@@ -1,0 +1,92 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 700,
+  "height": 400,
+  "title": {"text": "Carbon Monoxide Air Quality Around the World", "fontSize": 24},
+  "params": [
+    {
+      "name": "CO_Controller",
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 140,
+        "step": 20,
+        "name": "CO AQI Value:"
+      }
+    },
+    {
+      "name": "Country_Filter",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Australia",
+          "United States of America",
+          "China",
+          "India",
+          "United Kingdom of Great Britain and Northern Ireland",
+          "Malaysia",
+          "Canada",
+          "Germany",
+          "Italy",
+          "France"
+        ],
+        "labels": [
+          "Show All",
+          "Australia",
+          "USA",
+          "China",
+          "India",
+          "UK",
+          "Malaysia",
+          "Canada",
+          "Germany",
+          "Italy",
+          "France"
+        ],
+        "name": "Country Filter:"
+      }
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/jdun0012/Assignment29/main/AQI%20and%20Lat%20Long%20of%20Countries.csv"
+  },
+  "transform": [
+    {"filter": "datum.CO_AQI_Value > CO_Controller"},
+    {"filter": "Country_Filter == null || datum.Country == Country_Filter"},
+    {"filter": "isValid(datum.Country)"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "aggregate": "average",
+      "field": "CO_AQI_Value",
+      "type": "quantitative",
+      "title": "Average CO AQI Value",
+      "axis": {"labelFontSize": 15, "titleFontSize": 15}
+    },
+    "x": {"field": "Country", "type": "ordinal", "axis": {"labelFontSize": 15, "titleFontSize": 15}},
+    "color": {
+      "field": "CO_AQI_Category",
+      "type": "nominal",
+      "title": "AQI Category",
+      
+      "legend": {"titleFontSize": 13},
+      "scale": {
+        "domain": [
+          "Good",
+          "Moderate",
+          "Unhealthy",
+          "Very Unhealthy",
+          "Hazardous"
+        ],
+        "range": ["#89CE00", "#5BA300", "#0073E6", "#E6308A", "#B51963"]
+      }
+    },
+    "tooltip": [
+      {"field": "CO_AQI_Value", "type": "nominal", "title": "Average CO AQI"},
+      {"field": "Country"}
+    ]
+  },
+  "config": {}
+}

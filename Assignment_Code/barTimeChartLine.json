@@ -1,0 +1,97 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jdun0012/Assignment26/main/data_date.csv"
+  },
+  "params": [
+    {
+      "name": "Country_Filter",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Australia",
+          "United States of America",
+          "China",
+          "India"
+        ],
+        "labels": ["Show All", "Australia", "USA", "China", "India"],
+        "name": "Country Selection"
+      }
+    }
+  ],
+  "layer": [
+    {
+      "transform": [
+        {"filter": "isValid(datum.Date)"},
+        {"filter": "isValid(datum.AQI_Value)"},
+        {"filter": "Country_Filter == null || datum.Country == Country_Filter"}
+      ],
+      "mark": {"type": "bar"},
+      "encoding": {
+        "x": {
+          "timeUnit": "yearmonthdate",
+          "field": "Date",
+          "type": "ordinal",
+          "title": "Month of the year"
+        },
+        "y": {
+          "field": "AQI_Value",
+          "type": "quantitative",
+          "stack": "",
+          "title": "AQI Value"
+        },
+        "tooltip": [
+          {"field": "AQI_Value", "type": "quantitative", "title": "AQI Value"},
+          {"field": "Country", "type": "ordinal"},
+          {
+            "field": "Date",
+            "type": "ordinal",
+            "timeUnit": "yearmonthdate",
+            "title": "Date"
+          }
+        ],
+        "color": {
+          "field": "Status",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Good",
+              "Moderate",
+              "Unhealthy",
+              "Very Unhealthy",
+              "Hazardous"
+            ],
+            "range": ["#5BA300", "#89CE00", "#0073E6", "#E6308A", "#B51963"]
+          },
+          "title": "AQI Category"
+        }
+      }
+    },
+    {
+      "mark": {"type": "line"},
+      "transform": [
+        {"filter": "isValid(datum.Date)"},
+        {"filter": "isValid(datum.AQI_Value)"},
+        {"filter": "Country_Filter == null || datum.Country == Country_Filter"},
+        {"regression": "AQI_Value", "on": "Date"}
+      ],
+      "encoding": {
+        "x": {
+          "aggregate": "average",
+          "timeUnit": "yearmonthdate",
+          "field": "Date",
+          "type": "ordinal",
+          "title": "Month of the year"
+        },
+        "y": {
+          "field": "AQI_Value",
+          "type": "quantitative",
+          "stack": "",
+          "title": "AQI Value"
+        }
+      }
+    }
+  ],
+  "config": {}
+}

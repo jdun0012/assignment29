@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 225,
+  "title": "Carbon Monoxide Air Quality Around the World",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jdun0012/Assignment23/main/AQI%20and%20Lat%20Long%20of%20Countries.csv"
+  },
+  "params": [
+    {
+      "name": "Country_Filter",
+      "select": {"type": "point", "fields": ["Country"]},
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "United States of America",
+          "Australia",
+          "China",
+          "India"
+        ],
+        "labels": ["Show All", "United States", "Australia", "China", "India"],
+        "name": "Country Selection: "
+      }
+    }
+  ],
+  "mark": {"type": "arc", "tooltip": true},
+  "encoding": {
+    "theta": {"field": "CO AQI Value", "type": "quantitative"},
+    "color": {
+      "condition": {
+        "param": "Country_Filter",
+        "field": "CO_AQI_Category",
+        "type": "nominal"
+      }
+    },
+    "tooltip": [
+      {"field": "Country", "type": "ordinal"},
+      {"field": "City"},
+      {"field": "CO AQI Value"}
+    ]
+  },
+  "config": {}
+}

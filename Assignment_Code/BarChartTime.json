@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/jdun0012/Assignment26/main/data_date.csv"
+  },
+  "transform": [
+    {"filter": "isValid(datum.Date)"},
+    {"filter": "isValid(datum.AQI_Value)"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "timeUnit": "yearmonthdate",
+      "field": "Date",
+      "type": "ordinal",
+      "title": "Month of the year"
+    },
+    "y": {
+      "field": "AQI_Value",
+      "type": "quantitative",
+      "stack": "",
+      "title": "AQI Value"
+    },
+    "tooltip": [
+      {
+        "field": "Date",
+        "type": "ordinal",
+        "timeUnit": "yearmonthdate",
+        "title": "Date"
+      },
+      {"field": "AQI_Value", "type": "quantitative"},
+      {"field": "Country", "type": "ordinal"}
+    ],
+    "color": {
+      "field": "Status",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Good",
+          "Moderate",
+          "Unhealthy",
+          "Very Unhealthy",
+          "Hazardous"
+        ],
+        "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd"]
+      },
+      "title": "AQI Category"
+    }
+  },
+  "config": {}
+}

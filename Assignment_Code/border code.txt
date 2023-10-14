@@ -1,0 +1,12 @@
+#left, #right {
+	background: #a5ebff;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 50px;
+		}
+		#left { left: 0; }
+		#right { right: 0; } 
+		
+	
